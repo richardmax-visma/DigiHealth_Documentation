@@ -16,11 +16,10 @@ AMQP-based bidirectional messaging between citizens and healthcare providers via
 - Transport: AMQP on NHN messaging infrastructure.
 - Auth/transport setup follows NHN AMQP requirements (cert-based). Use the queue configuration assigned by NHN.
 
-## Message flows
+## [Message flows](Ekontakt_Flow.mmd)
 
 - Citizen-initiated: `ForespørselFraInnbygger` → `SvarFraHelsekontakt`.
 - Provider-initiated: `ForespørselFraHelsekontakt` → `SvarFraInnbygger`.
-- Sequence illustration: [Ekontakt_Flow.mmd](Ekontakt_Flow.mmd).
 
 ## Diagrams
 

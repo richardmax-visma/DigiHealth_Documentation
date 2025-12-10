@@ -68,7 +68,7 @@ Classes: [MsgHead](Classes/MsgHead.mmd), [MsgInfo](Classes/MsgInfo.mmd), [Tjenes
 | `status`    | Status      | Processing status      |
 | `errorCode` | Feilkode    | Error code (if failed) |
 
-## Flow (summary)
+## [Flow](AMQP_Tjenesteoversikt_Flow.mmd) (summary)
 
 1. Provider sends `TjenesteOversikt` (MsgHead + payload) via AMQP.
 2. Helsenorge processes and returns `Applikasjonskvittering`.

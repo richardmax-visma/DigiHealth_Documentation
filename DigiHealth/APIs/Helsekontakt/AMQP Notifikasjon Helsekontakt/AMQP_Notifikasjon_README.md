@@ -82,7 +82,7 @@ Health contacts can now specify dialog categories:
 
 Implemented via CareTeam participants with different roles.
 
-## Flow
+## [Flow](AMQP_Notifikasjon_Flow.mmd)
 
 1. **Healthcare System** sends notification via AMQP
 2. Message contains `MsgHead` + FHIR `EpisodeOfCare`

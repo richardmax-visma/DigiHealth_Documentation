@@ -16,7 +16,7 @@ Two options:
 1. **HelseID** – scope "Helsekontakter" in self-service
 2. **Helsenorge STS** – pre-configure with public key
 
-## Process (2 steps)
+## [Process](Medlemstjenester_Flow.mmd) (2 steps)
 
 ### 1) Send health offerings (Helsetilbud)
 
