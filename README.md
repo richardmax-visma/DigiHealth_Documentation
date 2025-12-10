@@ -8,12 +8,12 @@ Mermaid diagrams and documentation for Norsk Helsenett (NHN) APIs.
 
 Check if citizens are digitally active on Helsenorge.
 
-📁 [Documentation](./diagrams/HelsenorgeAktivSjekken/HelsenorgeAktivSjekken_README.md)
+📁 [Documentation](./DigiHealth/APIs/HelsenorgeAktivSjekken/HelsenorgeAktivSjekken_README.md)
 
 | Diagram                                                                         | Description             |
 | ------------------------------------------------------------------------------- | ----------------------- |
-| [Flow](./diagrams/HelsenorgeAktivSjekken/HelsenorgeAktivSjekken_Flow.mmd)       | REST API sequence       |
-| [Classes](./diagrams/HelsenorgeAktivSjekken/HelsenorgeAktivSjekken_Classes.mmd) | Request/Response models |
+| [Flow](./DigiHealth/APIs/HelsenorgeAktivSjekken/HelsenorgeAktivSjekken_Flow.mmd)       | REST API sequence       |
+| [Classes](./DigiHealth/APIs/HelsenorgeAktivSjekken/HelsenorgeAktivSjekken_Classes.mmd) | Request/Response models |
 
 ---
 
@@ -21,13 +21,13 @@ Check if citizens are digitally active on Helsenorge.
 
 Citizen's entry point for digital healthcare communication.
 
-📁 [Documentation](./diagrams/Helsekontakt/README.md)
+📁 [Documentation](./DigiHealth/APIs/Helsekontakt/README.md)
 
 | Sub-API               | Technology  | Documentation                                                                                  |
 | --------------------- | ----------- | ---------------------------------------------------------------------------------------------- |
-| AMQP Tjenesteoversikt | AMQP        | [Docs](./diagrams/Helsekontakt/AMQP%20Tjenesteoversikt/AMQP_Tjenesteoversikt_README.md)        |
-| Medlemstjenester      | FHIR        | [Docs](./diagrams/Helsekontakt/Medlemstjenester/Medlemstjenester_README.md)                    |
-| AMQP Notifikasjon     | AMQP + FHIR | [Docs](./diagrams/Helsekontakt/AMQP%20Notifikasjon%20Helsekontakt/AMQP_Notifikasjon_README.md) |
+| AMQP Tjenesteoversikt | AMQP        | [Docs](./DigiHealth/APIs/Helsekontakt/AMQP%20Tjenesteoversikt/AMQP_Tjenesteoversikt_README.md)        |
+| Medlemstjenester      | FHIR        | [Docs](./DigiHealth/APIs/Helsekontakt/Medlemstjenester/Medlemstjenester_README.md)                    |
+| AMQP Notifikasjon     | AMQP + FHIR | [Docs](./DigiHealth/APIs/Helsekontakt/AMQP%20Notifikasjon%20Helsekontakt/AMQP_Notifikasjon_README.md) |
 
 ---
 
@@ -35,12 +35,12 @@ Citizen's entry point for digital healthcare communication.
 
 Bidirectional administrative messaging between citizens and healthcare providers.
 
-📁 [Documentation](./diagrams/Ekontakt/Ekontakt_README.md)
+📁 [Documentation](./DigiHealth/APIs/Ekontakt/Ekontakt_README.md)
 
 | Diagram                                             | Description         |
 | --------------------------------------------------- | ------------------- |
-| [Flow](./diagrams/Ekontakt/Ekontakt_Flow.mmd)       | AMQP message flow   |
-| [Classes](./diagrams/Ekontakt/Ekontakt_Classes.mmd) | Message data models |
+| [Flow](./DigiHealth/APIs/Ekontakt/Ekontakt_Flow.mmd)       | AMQP message flow   |
+| [Classes](./DigiHealth/APIs/Ekontakt/Ekontakt_Classes.mmd) | Message data models |
 
 ---
 
@@ -48,12 +48,12 @@ Bidirectional administrative messaging between citizens and healthcare providers
 
 Authentication and environment reference for NHN integrations.
 
-📁 [HelseID Folder](./diagrams/HelseID/)
+📁 [HelseID Folder](./DigiHealth/Authentication/HelseID/)
 
 | Document                                                     | Description                                           |
 | ------------------------------------------------------------ | ----------------------------------------------------- |
-| [Authentication](./diagrams/HelseID/HelseID_Auth.md)         | System-to-system authentication (deadline: 1.12.2025) |
-| [Test Environments](./diagrams/HelseID/Test_Environments.md) | MAS-02, TEST1, TEST2, QA, Prodkopi, PROD              |
+| [Authentication](./DigiHealth/Authentication/HelseID/HelseID_Auth.md)         | System-to-system authentication (deadline: 1.12.2025) |
+| [Test Environments](./DigiHealth/Authentication/HelseID/Test_Environments.md) | MAS-02, TEST1, TEST2, QA, Prodkopi, PROD              |
 
 ---
 
