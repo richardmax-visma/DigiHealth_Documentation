@@ -37,10 +37,11 @@ Bidirectional administrative messaging between citizens and healthcare providers
 
 📁 [Documentation](./DigiHealth/APIs/Ekontakt/Ekontakt_README.md)
 
-| Diagram                                                    | Description         |
-| ---------------------------------------------------------- | ------------------- |
-| [Flow](./DigiHealth/APIs/Ekontakt/Ekontakt_Flow.mmd)       | AMQP message flow   |
-| [Classes](./DigiHealth/APIs/Ekontakt/Ekontakt_Classes.mmd) | Message data models |
+| Diagram                                                                                   | Description             |
+| ----------------------------------------------------------------------------------------- | ----------------------- |
+| [Flow](./DigiHealth/APIs/Ekontakt/Ekontakt_Flow.mmd)                                      | AMQP message flow       |
+| [Citizen-initiated](./DigiHealth/APIs/Ekontakt/Relations/CitizenInitiatedRelations.mmd)   | Citizen → Provider flow |
+| [Provider-initiated](./DigiHealth/APIs/Ekontakt/Relations/ProviderInitiatedRelations.mmd) | Provider → Citizen flow |
 
 ---
 

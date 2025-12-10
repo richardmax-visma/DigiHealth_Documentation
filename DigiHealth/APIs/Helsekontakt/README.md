@@ -1,16 +1,14 @@
 # Helsekontakt (Health Contact)
 
-Helsekontakt is the citizen's entry point for digital communication with healthcare providers via Helsenorge. It enables dialog and appointment management.
+Citizen entry point for digital communication and services via Helsenorge.
 
-## Health Contact Types
+## When to use
 
-1. **Fastlege** - General Practitioner (from FLO registry)
-2. **Hjemmetjenester** - Home care services
-3. **Øvrig primærhelsetjeneste** - Other primary care
-4. **Spesialisthelsetjeneste** - Specialist care
-5. **Medlemstjenester** - Membership services
+- You need to expose digital dialog or service access for citizens.
+- You manage health contacts across primary care, specialists, or membership services.
+- You must notify citizens about available digital services or allow messaging.
 
-## Technical Implementations
+## Variants and technology
 
 | Technology  | API                                                        | Use Case                | Status                |
 | ----------- | ---------------------------------------------------------- | ----------------------- | --------------------- |
@@ -18,24 +16,21 @@ Helsekontakt is the citizen's entry point for digital communication with healthc
 | FHIR        | [Medlemstjenester](./Medlemstjenester_README.md)           | Membership services     | In Production         |
 | AMQP + FHIR | [Notifikasjon Helsekontakt](./AMQP_Notifikasjon_README.md) | General notifications   | In Production (Pilot) |
 
-## Diagrams
+## Health contact types
 
-### AMQP Tjenesteoversikt
+1. **Fastlege** - General Practitioner (from FLO registry)
+2. **Hjemmetjenester** - Home care services
+3. **Øvrig primærhelsetjeneste** - Other primary care
+4. **Spesialisthelsetjeneste** - Specialist care
+5. **Medlemstjenester** - Membership services
 
-- `AMQP_Tjenesteoversikt_Flow.mmd` - Message flow
-- `AMQP_Tjenesteoversikt_Classes.mmd` - Message structure
+## Diagrams (clickable)
 
-### Medlemstjenester (FHIR)
+- Tjenesteoversikt: [Flow](AMQP%20Tjenesteoversikt/AMQP_Tjenesteoversikt_Flow.mmd), [MsgHead](AMQP%20Tjenesteoversikt/Relations/MsgHeadRelations.mmd), [Applikasjonskvittering](AMQP%20Tjenesteoversikt/Relations/ApplikasjonskvitteringRelations.mmd)
+- Medlemstjenester: [Flow](Medlemstjenester/Medlemstjenester_Flow.mmd), [HealthcareService](Medlemstjenester/Relations/HealthcareServiceRelations.mmd), [Patient](Medlemstjenester/Relations/PatientRelations.mmd)
+- Notifikasjon Helsekontakt: [Flow](AMQP%20Notifikasjon%20Helsekontakt/AMQP_Notifikasjon_Flow.mmd), [EpisodeOfCare](AMQP%20Notifikasjon%20Helsekontakt/Relations/EpisodeOfCareRelations.mmd)
 
-- `Medlemstjenester_Flow.mmd` - API flow
-- `Medlemstjenester_Classes.mmd` - FHIR resources
-
-### AMQP Notifikasjon Helsekontakt
-
-- `AMQP_Notifikasjon_Flow.mmd` - Message flow
-- `AMQP_Notifikasjon_Classes.mmd` - FHIR EpisodeOfCare structure
-
-## Quick Comparison
+## Quick comparison
 
 | Feature    | Tjenesteoversikt | Medlemstjenester | Notifikasjon   |
 | ---------- | ---------------- | ---------------- | -------------- |

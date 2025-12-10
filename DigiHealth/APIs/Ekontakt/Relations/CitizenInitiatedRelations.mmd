@@ -1,0 +1,36 @@
+classDiagram
+
+class EkontaktMelding {
+  +String dialogId
+  +String meldingsId
+  +String tema
+  +String innhold
+  +DateTime opprettet
+  +String avsenderType
+  +Vedlegg[] vedlegg
+}
+
+class Vedlegg {
+  +String filnavn
+  +String mimeType
+  +byte[] innhold
+  +int storrelse
+}
+
+class ForespørselFraInnbygger {
+  +String innbyggerId
+  +String tjeneste
+  +String meldingInnhold
+  +Vedlegg[] vedlegg
+}
+
+class SvarFraHelsekontakt {
+  +String dialogId
+  +String svarInnhold
+  +DateTime sendt
+  +Vedlegg[] vedlegg
+}
+
+EkontaktMelding <|-- ForespørselFraInnbygger
+EkontaktMelding <|-- SvarFraHelsekontakt
+EkontaktMelding "1" *-- "0..*" Vedlegg : vedlegg

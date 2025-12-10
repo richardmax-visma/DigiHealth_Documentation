@@ -1,0 +1,11 @@
+classDiagram
+class EkontaktMelding {
+  +String dialogId
+  +String meldingsId
+  +String tema
+  +String innhold
+  +DateTime opprettet
+  +String avsenderType
+  +Vedlegg[] vedlegg
+}
+note for EkontaktMelding "dialogId: dialog ID (thread)\nmeldingsId: message ID\ntema: topic/subject\ninnhold: content\nopprettet: created at\navsenderType: sender type\nvedlegg: attachments"

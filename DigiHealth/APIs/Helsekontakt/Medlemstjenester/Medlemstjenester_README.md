@@ -4,24 +4,25 @@
 **Endpoint:** `https://eksternapi.helsenorge.no/helsekontakter/api/v1`  
 **Auth Scope:** Helsekontakter
 
-## Overview
+## When to use
 
-For organizations that offer the same health services to all their members. Sends health offerings and member lists to Helsenorge so citizens can access digital services like appointment management and provider communication.
+- You offer the same services to all members and need them visible in Helsenorge.
+- You must register member lists so citizens can use digital services (dialog, appointments).
 
 ## Authentication
 
 Two options:
 
-1. **HelseId** - Select scope "Helsekontakter" in self-service
-2. **Helsenorge STS** - Pre-configure with public key
+1. **HelseID** – scope "Helsekontakter" in self-service
+2. **Helsenorge STS** – pre-configure with public key
 
-## Two-Step Process
+## Process (2 steps)
 
-### Step 1: Send Health Offerings (Helsetilbud)
+### 1) Send health offerings (Helsetilbud)
 
-Defines what health services members receive.
+Defines what services members receive.
 
-**FHIR Resources:**
+Core classes: [HealthcareService](Classes/HealthcareService.mmd), [Organization](Classes/Organization.mmd), [Location](Classes/Location.mmd), [Endpoint](Classes/Endpoint.mmd), [Address](Classes/Address.mmd), [Telecom](Classes/Telecom.mmd).
 
 | Resource              | Field               | Description                     | Required |
 | --------------------- | ------------------- | ------------------------------- | -------- |
@@ -39,11 +40,11 @@ Defines what health services members receive.
 |                       | address.postalCode  | Postal code                     | ✅       |
 |                       | telecom.value       | Phone/URL                       |          |
 
-### Step 2: Send Member List (Medlemsliste)
+### 2) Send member list (Medlemsliste)
 
-Links members to the health offerings.
+Links members to offerings.
 
-**FHIR Patient Resource:**
+Classes: [Patient](Classes/Patient.mmd), [Contact](Classes/Contact.mmd), [Period](Classes/Period.mmd).
 
 | Field                           | Description                          | Required |
 | ------------------------------- | ------------------------------------ | -------- |
@@ -52,7 +53,14 @@ Links members to the health offerings.
 | contact.period.start            | Service start date                   | ✅       |
 | contact.period.end              | Service end date                     | ✅       |
 
-## Non-Functional Requirements
+## Diagrams
+
+- Flow: [Medlemstjenester_Flow.mmd](Medlemstjenester_Flow.mmd)
+- HealthcareService relations: [Relations/HealthcareServiceRelations.mmd](Relations/HealthcareServiceRelations.mmd)
+- Patient relations: [Relations/PatientRelations.mmd](Relations/PatientRelations.mmd)
+- Classes: [Classes folder](Classes/)
+
+## Non-functional requirements
 
 | Type                      | Requirement                          |
 | ------------------------- | ------------------------------------ |
@@ -73,9 +81,9 @@ Links members to the health offerings.
 
 ## Notes
 
-- If citizen hasn't consented to Helsenorge, their info cannot be stored
-- Sender should track digital status and periodically retry inactive members
-- Split member lists into configurable batches to avoid timeouts
+- If citizen hasn't consented to Helsenorge, their info cannot be stored.
+- Track digital status and periodically retry inactive members.
+- Split member lists into batches to avoid timeouts.
 
 ## Sources
 

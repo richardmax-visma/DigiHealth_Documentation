@@ -1,10 +1,15 @@
 # NHN Test Environments Reference
 
-## Overview
-
 NHN provides multiple test environments for development and validation of Helsenorge integrations.
 
-## Environment Summary
+## When to use
+
+- Determine which environment to target during development, testing, or production.
+- Find base URLs for Helsenorge, AMQP, and HelseID endpoints.
+
+See also: [HelseID Authentication](HelseID_Auth.md) for auth flow and scopes.
+
+## Environment summary
 
 | Environment | Purpose           | Stability | Use Case                       |
 | ----------- | ----------------- | --------- | ------------------------------ |

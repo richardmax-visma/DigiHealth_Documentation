@@ -1,14 +1,19 @@
 # HelseID Authentication Reference
 
-## Overview
-
 HelseID is Norway's national authentication service for the health sector, providing secure identity verification for both users and systems.
 
-## ⚠️ Important Deadline
+## When to use
 
-**All healthcare actors must use HelseID for system-to-system API access by December 1, 2025.**
+- Any system-to-system (machine-to-machine) API call to NHN/Helsenorge.
+- User authentication flows for healthcare applications.
 
-## Authentication Types
+See also: [Test Environments](Test_Environments.md) for endpoint URLs per environment.
+
+## ⚠️ Important
+
+**As of December 1, 2025, all healthcare actors must use HelseID for system-to-system API access.**
+
+## Authentication types
 
 ### 1. User Authentication
 

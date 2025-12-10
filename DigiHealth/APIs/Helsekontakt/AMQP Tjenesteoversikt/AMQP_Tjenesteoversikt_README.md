@@ -1,20 +1,32 @@
 # AMQP Tjenesteoversikt
 
-**API Name:** DIALOG_INNBYGGER_TJENESTEOVERSIKT  
+Sends an overview of home care services to citizens via AMQP messaging.
+
+**API Name:** `DIALOG_INNBYGGER_TJENESTEOVERSIKT`  
 **Technology:** AMQP  
 **Status:** In Production (since Feb 2017)  
 **Use case:** Home care services (hjemmetjenester) only
 
-## Overview
+## When to use
 
-Sends health contact information to citizens via AMQP messaging. Originally called "Tjenesteoversikt" (Service Overview) because it provides an overview of health services the citizen receives.
+- Citizen receives home care services and should see them in Helsenorge.
+- Services are marked as digital citizen services and must be synchronized.
 
-## Prerequisites
+## Channel and authentication
 
-- Sender must be able to mark services as digital citizen services
-- Sender must be capable of electronic message exchange with Helsenorge.no
+- Transport: AMQP on NHN messaging infrastructure (cert-based setup).
+- Queue/routing per NHN configuration for this API.
 
-## Message Structure
+## Diagrams
+
+- Flow: [AMQP_Tjenesteoversikt_Flow.mmd](AMQP_Tjenesteoversikt_Flow.mmd)
+- MsgHead relations: [Relations/MsgHeadRelations.mmd](Relations/MsgHeadRelations.mmd)
+- Applikasjonskvittering: [Relations/ApplikasjonskvitteringRelations.mmd](Relations/ApplikasjonskvitteringRelations.mmd)
+- Classes: [Classes folder](Classes/)
+
+## Message structure
+
+Classes: [MsgHead](Classes/MsgHead.mmd), [MsgInfo](Classes/MsgInfo.mmd), [TjenesteOversikt](Classes/TjenesteOversikt.mmd), [Tjeneste](Classes/Tjeneste.mmd), [RelaterteRoller](Classes/RelaterteRoller.mmd), [Applikasjonskvittering](Classes/Applikasjonskvittering.mmd).
 
 ### MsgHead (Header Message)
 
@@ -56,16 +68,11 @@ Sends health contact information to citizens via AMQP messaging. Originally call
 | `status`    | Status      | Processing status      |
 | `errorCode` | Feilkode    | Error code (if failed) |
 
-## Flow
+## Flow (summary)
 
-1. **Healthcare Provider** sends `TjenesteOversikt` message via AMQP
-2. Message contains `MsgHead` (header) + `TjenesteOversikt` (payload)
-3. **Helsenorge** receives and processes the message
-4. **Helsenorge** returns `Applikasjonskvittering` (acknowledgment)
-
-## Error Handling
-
-If citizen is not digitally active, the acknowledgment will contain an error indicating the message cannot be processed.
+1. Provider sends `TjenesteOversikt` (MsgHead + payload) via AMQP.
+2. Helsenorge processes and returns `Applikasjonskvittering`.
+3. If citizen is not digitally active, the ack indicates failure.
 
 ## Standards
 

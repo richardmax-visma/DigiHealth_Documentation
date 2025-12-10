@@ -1,0 +1,45 @@
+classDiagram
+
+class HealthcareService {
+  +string identifier
+  +bool active
+  +string name
+  +string comment
+  +Reference providedBy
+  +Reference location
+  +Endpoint endpoint
+}
+
+class Organization {
+  +string identifier
+  +string name
+  +Endpoint endpoint
+}
+
+class Location {
+  +Address address
+  +Telecom[] telecom
+}
+
+class Endpoint {
+  +string identifier
+  +string id
+}
+
+class Address {
+  +string line
+  +string city
+  +string postalCode
+}
+
+class Telecom {
+  +string system
+  +string value
+}
+
+HealthcareService --> Organization : providedBy
+HealthcareService --> Location : location
+HealthcareService --> Endpoint : endpoint
+Organization --> Endpoint : endpoint
+Location --> Address : address
+Location --> Telecom : telecom

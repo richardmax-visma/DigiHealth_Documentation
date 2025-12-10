@@ -1,13 +1,18 @@
 # HelsenorgeAktivSjekken (Digital Activity Check)
 
-Determines whether a citizen is digitally active on Helsenorge and how they can be reached. Use this API before sending digital notices or enrolling citizens into digital flows.
+Determines whether a citizen is digitally active on Helsenorge and how they can be reached. Call this before sending digital notices or enrolling citizens into digital flows.
+
+## When to use
+
+- You need to know if a citizen can be contacted digitally on Helsenorge (self or via representative).
+- You need the correct outreach channel prior to messaging or enrollment.
 
 ## Authentication
 
-- Requires machine-to-machine (client credentials) via HelseID with scope granting access to HelsenorgeAktivSjekken. See HelseID requirements reference above.
-- Include the bearer token in `Authorization: Bearer <token>`.
+- Machine-to-machine (client credentials) via HelseID with the scope for HelsenorgeAktivSjekken.
+- Send `Authorization: Bearer <token>` on each request.
 
-## Request body
+## Request payload
 
 | Field      | Type     | Required | Description                                   |
 | ---------- | -------- | -------- | --------------------------------------------- |
@@ -25,13 +30,13 @@ Class definitions: [Request](Classes/Request.mmd), [Omraade](Classes/Omraade.mmd
 
 Class definition: [Omraade](Classes/Omraade.mmd).
 
-## Response body
+## Response payload
 
-| Field          | Type                       | Description                           |
-| -------------- | -------------------------- | ------------------------------------- |
-| `erAktivListe` | Map<string, ErAktivStatus> | Map of national ID → activity status. |
+| Field          | Type                       | Description                                   |
+| -------------- | -------------------------- | --------------------------------------------- |
+| `erAktivListe` | Map<string, ErAktivStatus> | Map of national ID (`fnr`) → activity status. |
 
-Map structure is illustrated in [Relations/ClassRelations.mmd](Relations/ClassRelations.mmd).
+Map structure and relations: [Relations/ClassRelations.mmd](Relations/ClassRelations.mmd).
 
 ### ErAktivStatus
 
@@ -84,12 +89,13 @@ Content-Type: application/json
 }
 ```
 
-## Diagrams
+## Diagrams and classes
 
-- Class relations: see [Relations/ClassRelations.mmd](Relations/ClassRelations.mmd) (Mermaid class diagram).
-- Call flow: see [HelsenorgeAktivSjekken_Flow.mmd](HelsenorgeAktivSjekken_Flow.mmd) (Mermaid sequence diagram).
+- Request/response classes: [Request](Classes/Request.mmd), [Omraade](Classes/Omraade.mmd), [Response](Classes/Response.mmd), [ErAktivStatus](Classes/ErAktivStatus.mmd).
+- Class relations: [Relations/ClassRelations.mmd](Relations/ClassRelations.mmd) (Mermaid class diagram).
+- Call flow: [HelsenorgeAktivSjekken_Flow.mmd](HelsenorgeAktivSjekken_Flow.mmd) (Mermaid sequence diagram).
 
-Use these diagrams alongside the text above; update them when fields or steps change.
+Update diagrams when fields or steps change.
 
 ## Environments and endpoint
 

@@ -1,0 +1,35 @@
+classDiagram
+
+class MsgHead {
+  +MsgInfo msgInfo
+  +Document document
+}
+
+class MsgInfo {
+  +string msgId
+  +Type type
+  +Sender sender
+  +Receiver receiver
+  +Patient patient
+  +Ack ack
+}
+
+class TjenesteOversikt {
+  +Tjeneste[] tjenester
+}
+
+class Tjeneste {
+  +string id
+  +string navn
+  +bool digitalInnbyggertjeneste
+  +RelaterteRoller relaterteRoller
+}
+
+class RelaterteRoller {
+  +Helsepersonell[] helsepersonell
+}
+
+MsgHead *-- MsgInfo : msgInfo
+MsgHead *-- TjenesteOversikt : document
+TjenesteOversikt *-- Tjeneste : tjenester
+Tjeneste *-- RelaterteRoller : relaterteRoller

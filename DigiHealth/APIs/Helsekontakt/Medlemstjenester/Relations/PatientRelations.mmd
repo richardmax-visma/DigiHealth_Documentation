@@ -1,0 +1,19 @@
+classDiagram
+
+class Patient {
+  +string identifier
+  +Contact contact
+}
+
+class Contact {
+  +Reference organization
+  +Period period
+}
+
+class Period {
+  +date start
+  +date end
+}
+
+Patient --> Contact : contact
+Contact --> Period : period

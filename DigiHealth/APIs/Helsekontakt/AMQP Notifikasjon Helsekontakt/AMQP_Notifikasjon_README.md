@@ -1,20 +1,29 @@
 # AMQP Notifikasjon Helsekontakt
 
-**API Name:** NOTIFIKASJON_INNBYGGER_HELSEKONTAKT  
+**API Name:** `NOTIFIKASJON_INNBYGGER_HELSEKONTAKT`  
 **Technology:** AMQP + FHIR  
 **Status:** In Production (since Apr 2023)  
 **Use case:** General health contact notifications (new solution, under pilot)
 
-## Overview
+## When to use
 
-Sends new or updated health contact information to citizens. The health contact (Helsekontakt) enables digital dialog between citizen and healthcare provider.
+- Send new or updated health contact info to citizens.
+- Enable digital dialog between citizen and provider via Helsenorge.
 
-## Prerequisites
+## Channel and authentication
 
-- Sender must be registered in Address Registry with Level 2 HerId
-- Sender must support AMQP message exchange with Helsenorge
+- Transport: AMQP on NHN messaging infrastructure (cert-based).
+- Sender must be registered in Address Registry with Level 2 HerId.
 
-## Message Structure
+## Diagrams
+
+- Flow: [AMQP_Notifikasjon_Flow.mmd](AMQP_Notifikasjon_Flow.mmd)
+- EpisodeOfCare relations: [Relations/EpisodeOfCareRelations.mmd](Relations/EpisodeOfCareRelations.mmd)
+- Classes: [Classes folder](Classes/)
+
+## Message structure
+
+Classes: [MsgHead](Classes/MsgHead.mmd), [EpisodeOfCare](Classes/EpisodeOfCare.mmd), [CareTeam](Classes/CareTeam.mmd), [Participant](Classes/Participant.mmd), [AccessSecurity](Classes/AccessSecurity.mmd).
 
 ### MsgHead (Header)
 

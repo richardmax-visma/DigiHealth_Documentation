@@ -1,42 +1,39 @@
 # E-kontakt (Electronic Contact)
 
-## Overview
-
-E-kontakt is an AMQP-based bidirectional messaging service that enables secure communication between citizens and healthcare providers through Helsenorge.
+AMQP-based bidirectional messaging between citizens and healthcare providers via Helsenorge.
 
 **API Name:** `DIALOG_INNBYGGER_EKONTAKT`  
 **Technology:** AMQP (Advanced Message Queuing Protocol)
 
-## Features
+## When to use
 
-- **Bidirectional Communication:** Both citizens and healthcare providers can initiate conversations
-- **Threaded Dialogs:** Messages are grouped by `dialogId` for organized conversations
-- **Attachment Support:** PDF, JPG, PNG files can be attached to messages
-- **Administrative Contact:** Used for non-clinical administrative communication
+- Administrative, non-clinical dialogs with citizens.
+- Either party (citizen or provider) needs to start or continue a threaded dialog.
+- Attachments need to accompany the dialog.
+
+## Channel and authentication
+
+- Transport: AMQP on NHN messaging infrastructure.
+- Auth/transport setup follows NHN AMQP requirements (cert-based). Use the queue configuration assigned by NHN.
+
+## Message flows
+
+- Citizen-initiated: `ForespørselFraInnbygger` → `SvarFraHelsekontakt`.
+- Provider-initiated: `ForespørselFraHelsekontakt` → `SvarFraInnbygger`.
+- Sequence illustration: [Ekontakt_Flow.mmd](Ekontakt_Flow.mmd).
 
 ## Diagrams
 
-### Flow Diagram
+- Flow: [Ekontakt_Flow.mmd](Ekontakt_Flow.mmd)
+- Citizen-initiated relations: [Relations/CitizenInitiatedRelations.mmd](Relations/CitizenInitiatedRelations.mmd)
+- Provider-initiated relations: [Relations/ProviderInitiatedRelations.mmd](Relations/ProviderInitiatedRelations.mmd)
+- Classes: [Classes folder](Classes/)
 
-See [Ekontakt_Flow.mmd](./Ekontakt_Flow.mmd) for the message flow visualization.
+## Payloads and classes
 
-### Class Diagram
+Classes: [EkontaktMelding](Classes/EkontaktMelding.mmd), [Vedlegg](Classes/Vedlegg.mmd), [ForespørselFraInnbygger](Classes/ForespørselFraInnbygger.mmd), [SvarFraHelsekontakt](Classes/SvarFraHelsekontakt.mmd), [ForespørselFraHelsekontakt](Classes/ForespørselFraHelsekontakt.mmd), [SvarFraInnbygger](Classes/SvarFraInnbygger.mmd).
 
-See [Ekontakt_Classes.mmd](./Ekontakt_Classes.mmd) for data model.
-
-## Message Types
-
-### Citizen-Initiated Flow
-
-1. **ForespørselFraInnbygger** (Request from Citizen) - Citizen sends initial message
-2. **SvarFraHelsekontakt** (Response from Health Contact) - Provider responds
-
-### Healthcare-Initiated Flow
-
-1. **ForespørselFraHelsekontakt** (Request from Health Contact) - Provider sends initial message
-2. **SvarFraInnbygger** (Response from Citizen) - Citizen responds
-
-## Field Translations
+Core fields:
 
 | Norwegian    | English     | Description                   |
 | ------------ | ----------- | ----------------------------- |
@@ -53,7 +50,7 @@ See [Ekontakt_Classes.mmd](./Ekontakt_Classes.mmd) for data model.
 | tjeneste     | Service     | Healthcare service identifier |
 | sendt        | Sent        | Send timestamp                |
 
-## Attachment Support
+## Attachments
 
 | Format | MIME Type       | Notes     |
 | ------ | --------------- | --------- |
