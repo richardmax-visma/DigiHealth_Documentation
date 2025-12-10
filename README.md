@@ -10,8 +10,8 @@ Check if citizens are digitally active on Helsenorge.
 
 📁 [Documentation](./DigiHealth/APIs/HelsenorgeAktivSjekken/HelsenorgeAktivSjekken_README.md)
 
-| Diagram                                                                         | Description             |
-| ------------------------------------------------------------------------------- | ----------------------- |
+| Diagram                                                                                | Description             |
+| -------------------------------------------------------------------------------------- | ----------------------- |
 | [Flow](./DigiHealth/APIs/HelsenorgeAktivSjekken/HelsenorgeAktivSjekken_Flow.mmd)       | REST API sequence       |
 | [Classes](./DigiHealth/APIs/HelsenorgeAktivSjekken/HelsenorgeAktivSjekken_Classes.mmd) | Request/Response models |
 
@@ -23,8 +23,8 @@ Citizen's entry point for digital healthcare communication.
 
 📁 [Documentation](./DigiHealth/APIs/Helsekontakt/README.md)
 
-| Sub-API               | Technology  | Documentation                                                                                  |
-| --------------------- | ----------- | ---------------------------------------------------------------------------------------------- |
+| Sub-API               | Technology  | Documentation                                                                                         |
+| --------------------- | ----------- | ----------------------------------------------------------------------------------------------------- |
 | AMQP Tjenesteoversikt | AMQP        | [Docs](./DigiHealth/APIs/Helsekontakt/AMQP%20Tjenesteoversikt/AMQP_Tjenesteoversikt_README.md)        |
 | Medlemstjenester      | FHIR        | [Docs](./DigiHealth/APIs/Helsekontakt/Medlemstjenester/Medlemstjenester_README.md)                    |
 | AMQP Notifikasjon     | AMQP + FHIR | [Docs](./DigiHealth/APIs/Helsekontakt/AMQP%20Notifikasjon%20Helsekontakt/AMQP_Notifikasjon_README.md) |
@@ -37,8 +37,8 @@ Bidirectional administrative messaging between citizens and healthcare providers
 
 📁 [Documentation](./DigiHealth/APIs/Ekontakt/Ekontakt_README.md)
 
-| Diagram                                             | Description         |
-| --------------------------------------------------- | ------------------- |
+| Diagram                                                    | Description         |
+| ---------------------------------------------------------- | ------------------- |
 | [Flow](./DigiHealth/APIs/Ekontakt/Ekontakt_Flow.mmd)       | AMQP message flow   |
 | [Classes](./DigiHealth/APIs/Ekontakt/Ekontakt_Classes.mmd) | Message data models |
 
@@ -50,8 +50,8 @@ Authentication and environment reference for NHN integrations.
 
 📁 [HelseID Folder](./DigiHealth/Authentication/HelseID/)
 
-| Document                                                     | Description                                           |
-| ------------------------------------------------------------ | ----------------------------------------------------- |
+| Document                                                                      | Description                                           |
+| ----------------------------------------------------------------------------- | ----------------------------------------------------- |
 | [Authentication](./DigiHealth/Authentication/HelseID/HelseID_Auth.md)         | System-to-system authentication (deadline: 1.12.2025) |
 | [Test Environments](./DigiHealth/Authentication/HelseID/Test_Environments.md) | MAS-02, TEST1, TEST2, QA, Prodkopi, PROD              |
 
