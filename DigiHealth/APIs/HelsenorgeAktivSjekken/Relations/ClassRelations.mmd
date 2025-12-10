@@ -11,8 +11,10 @@ classDiagram
     }
 
     class Response {
-        +Map erAktivListe
+        +Map~String, ErAktivStatus~ erAktivListe
     }
+
+    note for Response "erAktivListe key = fnr (national ID)"
 
     class ErAktivStatus {
         +bool erAktivSelv
