@@ -24,6 +24,32 @@ Sends an overview of home care services to citizens via AMQP messaging.
 - Applikasjonskvittering: [Relations/ApplikasjonskvitteringRelations.mmd](Relations/ApplikasjonskvitteringRelations.mmd)
 - Classes: [Classes folder](Classes/)
 
+Inline flow:
+
+```mermaid
+%% keep in sync with AMQP_Tjenesteoversikt_Flow.mmd
+sequenceDiagram
+	participant Sender as 🏥 Healthcare Provider
+	participant AMQP as 📨 AMQP Broker
+	participant HN as 🌐 Helsenorge
+
+	rect rgb(240, 248, 255)
+		Note over Sender,HN: Send Health Contact
+		Sender->>AMQP: TjenesteOversikt Message
+		Note right of Sender: MsgHead + TjenesteOversikt
+		AMQP->>HN: Forward Message
+	end
+
+	rect rgb(240, 255, 240)
+		Note over HN,Sender: Acknowledgment
+		HN->>AMQP: Applikasjonskvittering
+		AMQP->>Sender: Delivery Confirmation
+	end
+
+```
+
+Source file: [AMQP_Tjenesteoversikt_Flow.mmd](AMQP_Tjenesteoversikt_Flow.mmd)
+
 ## Message structure
 
 Classes: [MsgHead](Classes/MsgHead.mmd), [MsgInfo](Classes/MsgInfo.mmd), [TjenesteOversikt](Classes/TjenesteOversikt.mmd), [Tjeneste](Classes/Tjeneste.mmd), [RelaterteRoller](Classes/RelaterteRoller.mmd), [Applikasjonskvittering](Classes/Applikasjonskvittering.mmd).

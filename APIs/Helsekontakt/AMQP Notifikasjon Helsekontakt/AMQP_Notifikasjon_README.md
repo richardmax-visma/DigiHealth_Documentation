@@ -21,6 +21,38 @@
 - EpisodeOfCare relations: [Relations/EpisodeOfCareRelations.mmd](Relations/EpisodeOfCareRelations.mmd)
 - Classes: [Classes folder](Classes/)
 
+Inline flow:
+
+```mermaid
+%% keep in sync with AMQP_Notifikasjon_Flow.mmd
+sequenceDiagram
+	participant EPJ as 🏥 Healthcare System
+	participant AMQP as 📨 AMQP Broker
+	participant HN as 🌐 Helsenorge
+
+	rect rgb(240, 248, 255)
+		Note over EPJ,HN: Create/Update Health Contact
+		EPJ->>AMQP: Notifikasjon Helsekontakt
+		Note right of EPJ: MsgHead + FHIR EpisodeOfCare
+		AMQP->>HN: Forward Message
+	end
+
+	rect rgb(240, 255, 240)
+		Note over HN,EPJ: Acknowledgment
+		HN->>AMQP: Applikasjonskvittering
+		AMQP->>EPJ: Delivery Confirmation
+	end
+
+	rect rgb(255, 250, 240)
+		Note over HN,EPJ: Citizen Uses Service
+		HN->>AMQP: Dialog Message
+		AMQP->>EPJ: Citizen Communication
+	end
+
+```
+
+Source file: [AMQP_Notifikasjon_Flow.mmd](AMQP_Notifikasjon_Flow.mmd)
+
 ## Message structure
 
 Classes: [MsgHead](Classes/MsgHead.mmd), [EpisodeOfCare](Classes/EpisodeOfCare.mmd), [CareTeam](Classes/CareTeam.mmd), [Participant](Classes/Participant.mmd), [AccessSecurity](Classes/AccessSecurity.mmd).

@@ -87,7 +87,36 @@ Content-Type: application/json
 
 - Request/response classes: [Request](Classes/Request.mmd), [Omraade](Classes/Omraade.mmd), [Response](Classes/Response.mmd), [ErAktivStatus](Classes/ErAktivStatus.mmd).
 - Class relations: [Relations/ClassRelations.mmd](Relations/ClassRelations.mmd) (Mermaid class diagram).
-- Call flow: [HelsenorgeAktivSjekken_Flow.mmd](HelsenorgeAktivSjekken_Flow.mmd) (Mermaid sequence diagram).
+- Call flow (inline):
+
+```mermaid
+%% keep in sync with HelsenorgeAktivSjekken_Flow.mmd
+sequenceDiagram
+  participant Client as 🏥 Healthcare System
+  participant HelseId as 🔐 HelseId
+  participant API as 📡 HelsenorgeAktivSjekken
+
+  rect rgb(240, 248, 255)
+    Note over Client,HelseId: Authentication
+    Client->>HelseId: Request Access Token
+    HelseId-->>Client: Access Token (scope: HelsenorgeAktivSjekken)
+  end
+
+  rect rgb(240, 255, 240)
+    Note over Client,API: API Call
+    Client->>API: POST /digitaltaktiv/helsenorgeaktivsjekken/v1
+    Note right of Client: Body:<br/>fnrListe: ["fnr1", "fnr2"]<br/>omraade: 3 (Healthcare)
+  end
+
+  rect rgb(255, 250, 240)
+    Note over API,Client: Response
+    API-->>Client: 200 OK
+    Note left of API: erAktivListe:<br/>• erAktivSelv: boolean<br/>• erAktivViaAndre: boolean<br/>• tildeltFullmakt: boolean
+  end
+
+```
+
+- Call flow (source file): [HelsenorgeAktivSjekken_Flow.mmd](HelsenorgeAktivSjekken_Flow.mmd)
 
 Update diagrams when fields or steps change.
 
