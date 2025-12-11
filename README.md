@@ -69,7 +69,7 @@ _Prerequisite: run HelsenorgeAktivSjekken to verify the citizen’s digital reac
 
 ## Test Environments
 
-Environment reference and endpoints: [Test Environments](./DigiHealth/Test_Environments/Test_Environments.md) (MAS-02, TEST1, TEST2, QA, Prodkopi, PROD).
+Environment reference and endpoints: [Test Environments](./DigiHealth/Test_Environments/README.md) (MAS-02, TEST1, TEST2, QA, Prodkopi, PROD).
 
 ## Quick Reference
 
