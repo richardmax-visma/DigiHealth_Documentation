@@ -39,7 +39,7 @@ Check if citizens are digitally active on Helsenorge.
 
 Citizen's entry point for digital healthcare communication.
 
-Prerequisite: run HelsenorgeAktivSjekken first to confirm the citizen can be reached digitally (self or via representative) before sending notifications/messages.
+_Prerequisite: run HelsenorgeAktivSjekken first to confirm the citizen can be reached digitally (self or via representative) before sending notifications/messages._
 
 📁 [Documentation](./DigiHealth/APIs/Helsekontakt/README.md)
 
@@ -55,7 +55,7 @@ Prerequisite: run HelsenorgeAktivSjekken first to confirm the citizen can be rea
 
 Bidirectional administrative messaging between citizens and healthcare providers.
 
-Prerequisite: run HelsenorgeAktivSjekken to verify the citizen’s digital reachability and channel before sending AMQP messages.
+_Prerequisite: run HelsenorgeAktivSjekken to verify the citizen’s digital reachability and channel before sending AMQP messages._
 
 📁 [Documentation](./DigiHealth/APIs/Ekontakt/Ekontakt_README.md)
 
