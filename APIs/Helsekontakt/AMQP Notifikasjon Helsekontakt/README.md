@@ -128,10 +128,10 @@ classDiagram
 
 #### [Participant](Classes/Participant.mmd)
 
-| Field   | Description                     |
-| ------- | ------------------------------- |
-| `role`  | Role of the care team member    |
-| `member`| Reference to practitioner/role  |
+| Field    | Description                    |
+| -------- | ------------------------------ |
+| `role`   | Role of the care team member   |
+| `member` | Reference to practitioner/role |
 
 ```mermaid
 %% keep in sync with Classes/Participant.mmd

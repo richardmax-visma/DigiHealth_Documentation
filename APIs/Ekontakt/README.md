@@ -104,12 +104,12 @@ classDiagram
 
 ## [Attachments](Classes/Vedlegg.mmd)
 
-| Field       | Description                          |
-| ----------- | ------------------------------------ |
-| `filnavn`   | Filename                             |
-| `mimeType`  | MIME type (PDF/JPG/PNG)              |
-| `innhold`   | File content (base64-encoded)        |
-| `storrelse` | Size in bytes                        |
+| Field       | Description                   |
+| ----------- | ----------------------------- |
+| `filnavn`   | Filename                      |
+| `mimeType`  | MIME type (PDF/JPG/PNG)       |
+| `innhold`   | File content (base64-encoded) |
+| `storrelse` | Size in bytes                 |
 
 ```mermaid
 %% keep in sync with Classes/Vedlegg.mmd
@@ -131,12 +131,12 @@ classDiagram
 
 ## [ForespørselFraInnbygger](Classes/ForespørselFraInnbygger.mmd)
 
-| Field            | Description                  |
-| ---------------- | ---------------------------- |
-| `innbyggerId`    | Citizen ID (fødselsnummer)   |
-| `tjeneste`       | Healthcare service identifier|
-| `meldingInnhold` | Message content              |
-| `vedlegg`        | Attachments                  |
+| Field            | Description                   |
+| ---------------- | ----------------------------- |
+| `innbyggerId`    | Citizen ID (fødselsnummer)    |
+| `tjeneste`       | Healthcare service identifier |
+| `meldingInnhold` | Message content               |
+| `vedlegg`        | Attachments                   |
 
 ```mermaid
 %% keep in sync with Classes/ForespørselFraInnbygger.mmd
@@ -152,12 +152,12 @@ classDiagram
 
 ## [SvarFraHelsekontakt](Classes/SvarFraHelsekontakt.mmd)
 
-| Field          | Description                        |
-| -------------- | ---------------------------------- |
-| `dialogId`     | Dialog ID the response belongs to  |
-| `svarInnhold`  | Response content                   |
-| `sendt`        | Sent timestamp                     |
-| `vedlegg`      | Attachments                        |
+| Field         | Description                       |
+| ------------- | --------------------------------- |
+| `dialogId`    | Dialog ID the response belongs to |
+| `svarInnhold` | Response content                  |
+| `sendt`       | Sent timestamp                    |
+| `vedlegg`     | Attachments                       |
 
 ```mermaid
 %% keep in sync with Classes/SvarFraHelsekontakt.mmd
@@ -173,12 +173,12 @@ classDiagram
 
 ## [ForespørselFraHelsekontakt](Classes/ForespørselFraHelsekontakt.mmd)
 
-| Field            | Description                  |
-| ---------------- | ---------------------------- |
-| `innbyggerId`    | Citizen ID (fødselsnummer)   |
-| `tjeneste`       | Healthcare service identifier|
-| `meldingInnhold` | Message content              |
-| `vedlegg`        | Attachments                  |
+| Field            | Description                   |
+| ---------------- | ----------------------------- |
+| `innbyggerId`    | Citizen ID (fødselsnummer)    |
+| `tjeneste`       | Healthcare service identifier |
+| `meldingInnhold` | Message content               |
+| `vedlegg`        | Attachments                   |
 
 ```mermaid
 %% keep in sync with Classes/ForespørselFraHelsekontakt.mmd
@@ -194,12 +194,12 @@ classDiagram
 
 ## [SvarFraInnbygger](Classes/SvarFraInnbygger.mmd)
 
-| Field          | Description                        |
-| -------------- | ---------------------------------- |
-| `dialogId`     | Dialog ID the response belongs to  |
-| `svarInnhold`  | Response content                   |
-| `sendt`        | Sent timestamp                     |
-| `vedlegg`      | Attachments                        |
+| Field         | Description                       |
+| ------------- | --------------------------------- |
+| `dialogId`    | Dialog ID the response belongs to |
+| `svarInnhold` | Response content                  |
+| `sendt`       | Sent timestamp                    |
+| `vedlegg`     | Attachments                       |
 
 ```mermaid
 %% keep in sync with Classes/SvarFraInnbygger.mmd

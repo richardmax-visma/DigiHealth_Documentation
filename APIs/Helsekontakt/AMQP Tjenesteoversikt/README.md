@@ -77,14 +77,14 @@ classDiagram
 
 ### [MsgInfo](Classes/MsgInfo.mmd)
 
-| Field      | Norwegian | English             |
-| ---------- | --------- | ------------------- |
+| Field      | Norwegian   | English             |
+| ---------- | ----------- | ------------------- |
 | `msgId`    | Meldings-ID | Message ID (unique) |
-| `type`     | Type      | Message type        |
-| `sender`   | Avsender  | Sender info         |
-| `receiver` | Mottaker  | Receiver info       |
-| `patient`  | Pasient   | Patient info        |
-| `ack`      | Kvittering| Acknowledgment rule |
+| `type`     | Type        | Message type        |
+| `sender`   | Avsender    | Sender info         |
+| `receiver` | Mottaker    | Receiver info       |
+| `patient`  | Pasient     | Patient info        |
+| `ack`      | Kvittering  | Acknowledgment rule |
 
 ```mermaid
 %% keep in sync with Classes/MsgInfo.mmd
