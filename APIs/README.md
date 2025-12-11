@@ -11,7 +11,7 @@ Documentation for NHN/DigiHelse integrations grouped by domain. Each subfolder h
 ## Prerequisites
 
 - Authentication: [HelseID](../Authentication/HelseID_Auth/) for REST/FHIR; [AMQP mTLS](../Authentication/AMQP_Auth/) for messaging queues.
-- Environment endpoints: see [Test Environments](../Test_Environments/README.md).
+- Environment endpoints: see [Test Environments](../Test_Environments/).
 
 ## Diagrams
 

@@ -7,7 +7,7 @@ HelseID is Norway's national authentication service for the health sector, provi
 - Any system-to-system (machine-to-machine) API call to NHN/Helsenorge.
 - User authentication flows for healthcare applications.
 
-See also: [Test Environments](../Test_Environments/README.md) for endpoint URLs per environment.
+See also: [Test Environments](../Test_Environments/) for endpoint URLs per environment.
 
 ## ⚠️ Important
 
