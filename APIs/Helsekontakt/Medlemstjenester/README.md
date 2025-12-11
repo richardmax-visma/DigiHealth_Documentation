@@ -73,6 +73,122 @@ Core classes: [HealthcareService](Classes/HealthcareService.mmd), [Organization]
 |                                                        | address.postalCode  | Postal code                     | ✅       |
 |                                                        | telecom.value       | Phone/URL                       |          |
 
+#### [HealthcareService](Classes/HealthcareService.mmd)
+
+| Field             | Description                     |
+| ----------------- | ------------------------------- |
+| `identifier`      | Local GUID                      |
+| `active`          | Is active                       |
+| `name`            | Service name (shown to citizen) |
+| `comment`         | Description                     |
+| `providedBy`      | Reference to `Organization`     |
+| `location`        | Reference to `Location`         |
+| `endpoint`        | Endpoint identifier/id          |
+
+```mermaid
+%% keep in sync with Classes/HealthcareService.mmd
+classDiagram
+	class HealthcareService {
+		+string identifier
+		+bool active
+		+string name
+		+string comment
+		+Reference providedBy
+		+Reference location
+		+Endpoint endpoint
+	}
+
+```
+
+#### [Organization](Classes/Organization.mmd)
+
+| Field        | Description                                 |
+| ------------ | ------------------------------------------- |
+| `identifier` | Organization number (e.g., 948 554 062)     |
+| `name`       | Organization name                           |
+| `endpoint`   | Endpoint with business ID/communication ID  |
+
+```mermaid
+%% keep in sync with Classes/Organization.mmd
+classDiagram
+	class Organization {
+		+string identifier
+		+string name
+		+Endpoint endpoint
+	}
+
+```
+
+#### [Location](Classes/Location.mmd)
+
+| Field      | Description    |
+| ---------- | -------------- |
+| `address`  | Street address |
+| `telecom`  | Contact points |
+
+```mermaid
+%% keep in sync with Classes/Location.mmd
+classDiagram
+	class Location {
+		+Address address
+		+Telecom[] telecom
+	}
+
+```
+
+#### [Endpoint](Classes/Endpoint.mmd)
+
+| Field         | Description                |
+| ------------- | -------------------------- |
+| `identifier`  | Communication partner ID   |
+| `id`          | Business ID                |
+
+```mermaid
+%% keep in sync with Classes/Endpoint.mmd
+classDiagram
+	class Endpoint {
+		+string identifier
+		+string id
+	}
+
+```
+
+#### [Address](Classes/Address.mmd)
+
+| Field         | Description  |
+| ------------- | ------------ |
+| `line`        | Street line  |
+| `city`        | City         |
+| `postalCode`  | Postal code  |
+
+```mermaid
+%% keep in sync with Classes/Address.mmd
+classDiagram
+	class Address {
+		+string line
+		+string city
+		+string postalCode
+	}
+
+```
+
+#### [Telecom](Classes/Telecom.mmd)
+
+| Field    | Description      |
+| -------- | ---------------- |
+| `system` | Phone/URL system |
+| `value`  | Phone/URL value  |
+
+```mermaid
+%% keep in sync with Classes/Telecom.mmd
+classDiagram
+	class Telecom {
+		+string system
+		+string value
+	}
+
+```
+
 ### 2) Send member list (Medlemsliste)
 
 Links members to offerings.
@@ -85,6 +201,57 @@ Classes: [Patient](Classes/Patient.mmd), [Contact](Classes/Contact.mmd), [Period
 | contact.organization.identifier        | Organization number                  | ✅       |
 | contact.period.start                   | Service start date                   | ✅       |
 | contact.period.end                     | Service end date                     | ✅       |
+
+#### [Patient](Classes/Patient.mmd)
+
+| Field         | Description                                    |
+| ------------- | ---------------------------------------------- |
+| `identifier`  | National ID (fødselsnummer/d-nummer)           |
+| `contact`     | Contact record linking to organization/period  |
+
+```mermaid
+%% keep in sync with Classes/Patient.mmd
+classDiagram
+	class Patient {
+		+string identifier
+		+Contact contact
+	}
+
+```
+
+#### [Contact](Classes/Contact.mmd)
+
+| Field            | Description                    |
+| ---------------- | ------------------------------ |
+| `organization`   | Reference to `Organization`    |
+| `period`         | Active period for the service  |
+
+```mermaid
+%% keep in sync with Classes/Contact.mmd
+classDiagram
+	class Contact {
+		+Reference organization
+		+Period period
+	}
+
+```
+
+#### [Period](Classes/Period.mmd)
+
+| Field   | Description     |
+| ------- | --------------- |
+| `start` | Service start   |
+| `end`   | Service end     |
+
+```mermaid
+%% keep in sync with Classes/Period.mmd
+classDiagram
+	class Period {
+		+date start
+		+date end
+	}
+
+```
 
 ## Diagrams
 

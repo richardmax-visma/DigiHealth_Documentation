@@ -70,6 +70,16 @@ Contains sender, receiver, and patient info. The actual health contact is in the
 | Patient         | Patient info            |
 | Document        | FHIR EpisodeOfCare      |
 
+```mermaid
+%% keep in sync with Classes/MsgHead.mmd
+classDiagram
+	class MsgHead {
+		+MsgInfo msgInfo
+		+Document document
+	}
+
+```
+
 ### FHIR Resources
 
 Uses two FHIR resources:
@@ -85,12 +95,53 @@ Uses two FHIR resources:
 | managingOrganization | Healthcare organization              |
 | careTeam             | Contained CareTeam                   |
 
+```mermaid
+%% keep in sync with Classes/EpisodeOfCare.mmd
+classDiagram
+	class EpisodeOfCare {
+		+string id
+		+string status
+		+Meta meta
+		+Reference patient
+		+Reference managingOrg
+		+CareTeam careTeam
+	}
+
+```
+
 #### [CareTeam](Classes/CareTeam.mmd) (contained)
 
 | Field       | Description                        |
 | ----------- | ---------------------------------- |
 | name        | Team/service name                  |
 | participant | List of healthcare personnel/roles |
+
+```mermaid
+%% keep in sync with Classes/CareTeam.mmd
+classDiagram
+	class CareTeam {
+		+string name
+		+Participant[] participant
+	}
+
+```
+
+#### [Participant](Classes/Participant.mmd)
+
+| Field   | Description                     |
+| ------- | ------------------------------- |
+| `role`  | Role of the care team member    |
+| `member`| Reference to practitioner/role  |
+
+```mermaid
+%% keep in sync with Classes/Participant.mmd
+classDiagram
+	class Participant {
+		+Role role
+		+Reference member
+	}
+
+```
 
 ### [AccessSecurity](Classes/AccessSecurity.mmd) Enum (meta.security)
 
@@ -101,6 +152,18 @@ For patients aged 12-15, must specify access restrictions:
 | N           | Normal                    | Both parents and youth have access |
 | NORN_FORANS | Nektet, foreldreansvarlig | Parents denied (youth only)        |
 | NORN_UNGDOM | Nektet, ungdom            | Youth denied (parents only)        |
+
+```mermaid
+%% keep in sync with Classes/AccessSecurity.mmd
+classDiagram
+	class AccessSecurity {
+		<<enumeration>>
+		N
+		NORN_FORANS
+		NORN_UNGDOM
+	}
+
+```
 
 _Source: Volven kodeverk 9603_
 

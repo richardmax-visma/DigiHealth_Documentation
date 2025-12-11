@@ -65,11 +65,55 @@ Classes: [MsgHead](Classes/MsgHead.mmd), [MsgInfo](Classes/MsgInfo.mmd), [Tjenes
 | `patient`  | Pasient     | Patient info            |
 | `ack`      | Kvittering  | Acknowledgment settings |
 
+```mermaid
+%% keep in sync with Classes/MsgHead.mmd
+classDiagram
+	class MsgHead {
+		+MsgInfo msgInfo
+		+Document document
+	}
+
+```
+
+### [MsgInfo](Classes/MsgInfo.mmd)
+
+| Field      | Norwegian | English             |
+| ---------- | --------- | ------------------- |
+| `msgId`    | Meldings-ID | Message ID (unique) |
+| `type`     | Type      | Message type        |
+| `sender`   | Avsender  | Sender info         |
+| `receiver` | Mottaker  | Receiver info       |
+| `patient`  | Pasient   | Patient info        |
+| `ack`      | Kvittering| Acknowledgment rule |
+
+```mermaid
+%% keep in sync with Classes/MsgInfo.mmd
+classDiagram
+	class MsgInfo {
+		+string msgId
+		+Type type
+		+Sender sender
+		+Receiver receiver
+		+Patient patient
+		+Ack ack
+	}
+
+```
+
 ### [TjenesteOversikt](Classes/TjenesteOversikt.mmd) (Service Overview)
 
 | Field       | Norwegian | English          |
 | ----------- | --------- | ---------------- |
 | `tjenester` | Tjenester | List of services |
+
+```mermaid
+%% keep in sync with Classes/TjenesteOversikt.mmd
+classDiagram
+	class TjenesteOversikt {
+		+Tjeneste[] tjenester
+	}
+
+```
 
 ### [Tjeneste](Classes/Tjeneste.mmd) (Service)
 
@@ -80,11 +124,32 @@ Classes: [MsgHead](Classes/MsgHead.mmd), [MsgInfo](Classes/MsgInfo.mmd), [Tjenes
 | `digitalInnbyggertjeneste` | Digital innbyggertjeneste | Is digital citizen service (bool) |
 | `relaterteRoller`          | Relaterte roller          | Related roles/personnel           |
 
+```mermaid
+%% keep in sync with Classes/Tjeneste.mmd
+classDiagram
+	class Tjeneste {
+		+string id
+		+string navn
+		+bool digitalInnbyggertjeneste
+		+RelaterteRoller relaterteRoller
+	}
+
+```
+
 ### [RelaterteRoller](Classes/RelaterteRoller.mmd) (Related Roles)
 
 | Field            | Norwegian      | English                   |
 | ---------------- | -------------- | ------------------------- |
 | `helsepersonell` | Helsepersonell | Healthcare personnel list |
+
+```mermaid
+%% keep in sync with Classes/RelaterteRoller.mmd
+classDiagram
+	class RelaterteRoller {
+		+Helsepersonell[] helsepersonell
+	}
+
+```
 
 ### [Applikasjonskvittering](Classes/Applikasjonskvittering.mmd) (Application Receipt)
 
@@ -93,6 +158,17 @@ Classes: [MsgHead](Classes/MsgHead.mmd), [MsgInfo](Classes/MsgInfo.mmd), [Tjenes
 | `msgId`     | Meldings-ID | Original message ID    |
 | `status`    | Status      | Processing status      |
 | `errorCode` | Feilkode    | Error code (if failed) |
+
+```mermaid
+%% keep in sync with Classes/Applikasjonskvittering.mmd
+classDiagram
+	class Applikasjonskvittering {
+		+string msgId
+		+string status
+		+string errorCode
+	}
+
+```
 
 ## [Flow](AMQP_Tjenesteoversikt_Flow.mmd) (summary)
 

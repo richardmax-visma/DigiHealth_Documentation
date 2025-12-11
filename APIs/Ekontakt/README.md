@@ -87,13 +87,131 @@ Core fields ([EkontaktMelding](Classes/EkontaktMelding.mmd)):
 | tjeneste     | Service     | Healthcare service identifier |
 | sendt        | Sent        | Send timestamp                |
 
+```mermaid
+%% keep in sync with Classes/EkontaktMelding.mmd
+classDiagram
+	class EkontaktMelding {
+		+String dialogId
+		+String meldingsId
+		+String tema
+		+String innhold
+		+DateTime opprettet
+		+String avsenderType
+		+Vedlegg[] vedlegg
+	}
+
+```
+
 ## [Attachments](Classes/Vedlegg.mmd)
+
+| Field       | Description                          |
+| ----------- | ------------------------------------ |
+| `filnavn`   | Filename                             |
+| `mimeType`  | MIME type (PDF/JPG/PNG)              |
+| `innhold`   | File content (base64-encoded)        |
+| `storrelse` | Size in bytes                        |
+
+```mermaid
+%% keep in sync with Classes/Vedlegg.mmd
+classDiagram
+	class Vedlegg {
+		+String filnavn
+		+String mimeType
+		+byte[] innhold
+		+int storrelse
+	}
+
+```
 
 | Format | MIME Type       | Notes     |
 | ------ | --------------- | --------- |
 | PDF    | application/pdf | Documents |
 | JPG    | image/jpeg      | Images    |
 | PNG    | image/png       | Images    |
+
+## [ForespørselFraInnbygger](Classes/ForespørselFraInnbygger.mmd)
+
+| Field            | Description                  |
+| ---------------- | ---------------------------- |
+| `innbyggerId`    | Citizen ID (fødselsnummer)   |
+| `tjeneste`       | Healthcare service identifier|
+| `meldingInnhold` | Message content              |
+| `vedlegg`        | Attachments                  |
+
+```mermaid
+%% keep in sync with Classes/ForespørselFraInnbygger.mmd
+classDiagram
+	class ForespørselFraInnbygger {
+		+String innbyggerId
+		+String tjeneste
+		+String meldingInnhold
+		+Vedlegg[] vedlegg
+	}
+
+```
+
+## [SvarFraHelsekontakt](Classes/SvarFraHelsekontakt.mmd)
+
+| Field          | Description                        |
+| -------------- | ---------------------------------- |
+| `dialogId`     | Dialog ID the response belongs to  |
+| `svarInnhold`  | Response content                   |
+| `sendt`        | Sent timestamp                     |
+| `vedlegg`      | Attachments                        |
+
+```mermaid
+%% keep in sync with Classes/SvarFraHelsekontakt.mmd
+classDiagram
+	class SvarFraHelsekontakt {
+		+String dialogId
+		+String svarInnhold
+		+DateTime sendt
+		+Vedlegg[] vedlegg
+	}
+
+```
+
+## [ForespørselFraHelsekontakt](Classes/ForespørselFraHelsekontakt.mmd)
+
+| Field            | Description                  |
+| ---------------- | ---------------------------- |
+| `innbyggerId`    | Citizen ID (fødselsnummer)   |
+| `tjeneste`       | Healthcare service identifier|
+| `meldingInnhold` | Message content              |
+| `vedlegg`        | Attachments                  |
+
+```mermaid
+%% keep in sync with Classes/ForespørselFraHelsekontakt.mmd
+classDiagram
+	class ForespørselFraHelsekontakt {
+		+String innbyggerId
+		+String tjeneste
+		+String meldingInnhold
+		+Vedlegg[] vedlegg
+	}
+
+```
+
+## [SvarFraInnbygger](Classes/SvarFraInnbygger.mmd)
+
+| Field          | Description                        |
+| -------------- | ---------------------------------- |
+| `dialogId`     | Dialog ID the response belongs to  |
+| `svarInnhold`  | Response content                   |
+| `sendt`        | Sent timestamp                     |
+| `vedlegg`      | Attachments                        |
+
+```mermaid
+%% keep in sync with Classes/SvarFraInnbygger.mmd
+classDiagram
+	class SvarFraInnbygger {
+		+String dialogId
+		+String svarInnhold
+		+DateTime sendt
+		+Vedlegg[] vedlegg
+	}
+
+```
 
 ## Sources
 
