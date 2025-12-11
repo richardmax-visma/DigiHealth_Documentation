@@ -1,6 +1,23 @@
 # NHN Documentation
 
-Mermaid diagrams and documentation for Norsk Helsenett (NHN) APIs.
+Mermaid diagrams and documentation for Norsk Helsenett (NHN) integrations.
+
+## Spike goal (phase 1)
+
+- Enable secure, bidirectional messaging between citizens (via Helsenorge/DigiHelse) and municipal providers.
+- NHN services in scope (confirm with NHN): HelseID (auth, mandatory), E-kontakt AMQP (primary messaging), HelsenorgeAktivSjekken (reachability check); Helsekontakt variants only if required.
+- Target test environments first; confirm scopes, queues, and payloads before production.
+
+## Authentication (prerequisite)
+
+HelseID is required before any API calls. Auth docs live separately under `DigiHealth/Authentication/HelseID/` because every service depends on it.
+
+📁 [HelseID Folder](./DigiHealth/Authentication/HelseID/)
+
+| Document                                                                      | Description                               |
+| ----------------------------------------------------------------------------- | ----------------------------------------- |
+| [Authentication](./DigiHealth/Authentication/HelseID/HelseID_Auth.md)         | System-to-system authentication (HelseID) |
+| [Test Environments](./DigiHealth/Authentication/HelseID/Test_Environments.md) | MAS-02, TEST1, TEST2, QA, Prodkopi, PROD  |
 
 ## APIs
 
@@ -44,17 +61,6 @@ Bidirectional administrative messaging between citizens and healthcare providers
 | [Provider-initiated](./DigiHealth/APIs/Ekontakt/Relations/ProviderInitiatedRelations.mmd) | Provider → Citizen flow |
 
 ---
-
-### HelseID
-
-Authentication and environment reference for NHN integrations.
-
-📁 [HelseID Folder](./DigiHealth/Authentication/HelseID/)
-
-| Document                                                                      | Description                               |
-| ----------------------------------------------------------------------------- | ----------------------------------------- |
-| [Authentication](./DigiHealth/Authentication/HelseID/HelseID_Auth.md)         | System-to-system authentication (HelseID) |
-| [Test Environments](./DigiHealth/Authentication/HelseID/Test_Environments.md) | MAS-02, TEST1, TEST2, QA, Prodkopi, PROD  |
 
 ---
 
