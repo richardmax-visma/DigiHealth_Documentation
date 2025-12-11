@@ -16,7 +16,40 @@ Two options:
 1. **HelseID** – scope "Helsekontakter" in self-service
 2. **Helsenorge STS** – pre-configure with public key
 
-## [Process](Medlemstjenester_Flow.mmd) (2 steps)
+## Process (inline view)
+
+```mermaid
+%% keep in sync with Medlemstjenester_Flow.mmd
+sequenceDiagram
+	participant MS as 🏢 Membership System
+	participant Auth as 🔐 HelseId/STS
+	participant HN as 🌐 Helsenorge API
+
+	rect rgb(240, 248, 255)
+		Note over MS,Auth: Authentication
+		MS->>Auth: Request Access Token
+		Auth-->>MS: Access Token (scope: Helsekontakter)
+	end
+
+	rect rgb(255, 250, 240)
+		Note over MS,HN: 1. Send Health Offerings
+		MS->>HN: POST /helsekontakter/api/v1
+		Note right of MS: FHIR Bundle: HealthcareService + Organization + Location
+		HN-->>MS: 200 OK
+	end
+
+	rect rgb(240, 255, 240)
+		Note over MS,HN: 2. Send Member List
+		MS->>HN: POST /helsekontakter/api/v1
+		Note right of MS: FHIR Bundle: Patient[]
+		HN-->>MS: Response per member
+	end
+
+```
+
+Source file: [Medlemstjenester_Flow.mmd](Medlemstjenester_Flow.mmd)
+
+### Steps (summary)
 
 ### 1) Send health offerings (Helsetilbud)
 

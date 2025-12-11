@@ -16,10 +16,48 @@ AMQP-based bidirectional messaging between citizens and healthcare providers via
 - Transport: AMQP on NHN messaging infrastructure.
 - Auth/transport setup follows NHN AMQP requirements (cert-based). Use the queue configuration assigned by NHN.
 
-## [Message flows](Ekontakt_Flow.mmd)
+## Message flows
 
-- Citizen-initiated: `ForespørselFraInnbygger` → `SvarFraHelsekontakt`.
-- Provider-initiated: `ForespørselFraHelsekontakt` → `SvarFraInnbygger`.
+Inline view:
+
+```mermaid
+%% keep in sync with Ekontakt_Flow.mmd
+sequenceDiagram
+	participant Citizen as 👤 Citizen
+	participant HN as 🌐 Helsenorge
+	participant AMQP as 📨 AMQP
+	participant EPJ as 🏥 Healthcare System
+
+	rect rgb(240, 248, 255)
+		Note over Citizen,EPJ: Citizen Initiates Contact
+		Citizen->>HN: Send message
+		HN->>AMQP: Forespørsel fra innbygger
+		AMQP->>EPJ: Deliver to health contact
+	end
+
+	rect rgb(240, 255, 240)
+		Note over EPJ,Citizen: Healthcare Responds
+		EPJ->>AMQP: Svar fra helsekontakt
+		AMQP->>HN: Forward response
+		HN->>Citizen: Display message
+	end
+
+	rect rgb(255, 250, 240)
+		Note over EPJ,Citizen: Healthcare Initiates
+		EPJ->>AMQP: Forespørsel fra helsekontakt
+		AMQP->>HN: Forward to citizen
+		HN->>Citizen: Display message
+		Citizen->>HN: Reply
+		HN->>AMQP: Svar fra innbygger
+		AMQP->>EPJ: Deliver reply
+	end
+
+```
+
+Source file: [Ekontakt_Flow.mmd](Ekontakt_Flow.mmd)
+
+Citizen-initiated: `ForespørselFraInnbygger` → `SvarFraHelsekontakt`.
+Provider-initiated: `ForespørselFraHelsekontakt` → `SvarFraInnbygger`.
 
 ## Diagrams
 
