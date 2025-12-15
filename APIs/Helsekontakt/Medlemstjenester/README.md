@@ -1,8 +1,9 @@
 # Medlemstjenester (Membership Services)
 
-**Technology:** FHIR (v4.0)  
+**Technology:** REST + FHIR (R4)  
 **Endpoint:** `https://eksternapi.helsenorge.no/helsekontakter/api/v1`  
-**Auth Scope:** Helsekontakter
+**Auth:** JWT Bearer token (`Authorization: Bearer <token>`)  
+**Scope:** Helsekontakter
 
 ## When to use
 
@@ -11,10 +12,12 @@
 
 ## Authentication
 
-Two options:
+The endpoint is protected by a JWT bearer token (see Swagger `JWT` security scheme). In practice this is typically obtained via HelseID with scope `Helsekontakter`.
 
-1. **HelseID** – scope "Helsekontakter" in self-service
-2. **Helsenorge STS** – pre-configure with public key
+See also:
+
+- [HelseID authentication (shared)](../../Authentication/HelseID_Auth/README.md)
+- [HelseID auth flow](../../Authentication/HelseID_Auth/HelseID_Auth_Flow.mmd)
 
 ## Process (inline view)
 
@@ -22,7 +25,7 @@ Two options:
 %% keep in sync with Medlemstjenester_Flow.mmd
 sequenceDiagram
 	participant MS as 🏢 Membership System
-	participant Auth as 🔐 HelseId/STS
+	participant Auth as 🔐 HelseID
 	participant HN as 🌐 Helsenorge API
 
 	rect rgb(240, 248, 255)
@@ -279,12 +282,16 @@ classDiagram
 | TEST2       | https://eksternapi.hn2.test.nhn.no/helsekontakter/api/v1         |
 | PROD        | https://eksternapi.helsenorge.no/helsekontakter/api/v1           |
 
+## References / Sources
+
+- Medlemstjenester (official): https://helsenorge.atlassian.net/wiki/spaces/HELSENORGE/pages/24018962/Medlemstjenester
+- Helsekontakter Swagger (prod): https://eksternapi.helsenorge.no/helsekontakter/swagger/index.html
+- Helsekontakter OpenAPI (prod): https://eksternapi.helsenorge.no/helsekontakter/swagger/v1/swagger.json
+- Helsekontakter Swagger (test): https://eksternapi.hn.test.nhn.no/helsekontakter/swagger/index.html
+- Helsekontakter OpenAPI (test): https://eksternapi.hn.test.nhn.no/helsekontakter/swagger/v1/swagger.json
+
 ## Notes
 
 - If citizen hasn't consented to Helsenorge, their info cannot be stored.
 - Track digital status and periodically retry inactive members.
 - Split member lists into batches to avoid timeouts.
-
-## Sources
-
-- Medlemstjenester (official): https://helsenorge.atlassian.net/wiki/spaces/HELSENORGE/pages/24018962/Medlemstjenester
