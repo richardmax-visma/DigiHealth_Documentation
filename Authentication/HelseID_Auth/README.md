@@ -7,7 +7,7 @@ HelseID is Norway's national authentication service for the health sector, provi
 - Any system-to-system (machine-to-machine) API call to NHN/Helsenorge.
 - User authentication flows for healthcare applications.
 
-See also: [Test Environments](../Test_Environments/) for endpoint URLs per environment.
+See also: [Test Environments](../../Test_Environments/) for endpoint URLs per environment.
 
 ## ⚠️ Important
 
@@ -78,16 +78,6 @@ Request only the scopes needed for your integration:
 | TEST2       | https://helseid-sts.test.nhn.no |
 | QA          | https://helseid-sts.qa.nhn.no   |
 | PROD        | https://helseid-sts.nhn.no      |
-
-## Migration Notes
-
-If currently using basic authentication or other methods:
-
-1. Register in HelseID portal
-2. Update authentication flow
-3. Test in TEST1/TEST2 environment
-4. Validate in QA
-5. Deploy to production before deadline
 
 ## Security Best Practices
 
