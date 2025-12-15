@@ -8,13 +8,13 @@ Mermaid diagrams showing class relationships for HelsenorgeAktivSjekken.
 classDiagram
 	class Request {
 		+string[] fnrListe
-		+int omraade
+		+Omraade omraade
 	}
 
 	class Omraade {
 		<<enumeration>>
-		HELSEHJELP = 3
-		UNGDOM = 6
+		Helsehjelp
+		Ungdom
 	}
 
 	Request --> Omraade : omraade
@@ -32,8 +32,8 @@ classDiagram
 	note for Response "erAktivListe key = fnr (national ID)"
 
 	class ErAktivStatus {
-		+bool erAktivSelv
-		+bool erAktivViaAndre
+		+bool erDigitaltAktivSelv
+		+bool erDigitaltAktivViaAndre
 		+bool tildeltFullmakt
 	}
 

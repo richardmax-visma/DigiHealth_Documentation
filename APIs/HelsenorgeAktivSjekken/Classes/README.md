@@ -8,7 +8,7 @@ Domain models for HelsenorgeAktivSjekken requests and responses.
 classDiagram
 	class Request {
 		+string[] fnrListe
-		+int omraade
+		+Omraade omraade
 	}
 
 ```
@@ -19,9 +19,11 @@ classDiagram
 classDiagram
 	class Omraade {
 		<<enumeration>>
-		HELSEHJELP = 3
-		UNGDOM = 6
+		Helsehjelp
+		Ungdom
 	}
+
+	note for Omraade "Volven 7618: Helsehjelp=3, Ungdom=6"
 
 ```
 
@@ -42,8 +44,8 @@ classDiagram
 ```mermaid
 classDiagram
 	class ErAktivStatus {
-		+bool erAktivSelv
-		+bool erAktivViaAndre
+		+bool erDigitaltAktivSelv
+		+bool erDigitaltAktivViaAndre
 		+bool tildeltFullmakt
 	}
 
