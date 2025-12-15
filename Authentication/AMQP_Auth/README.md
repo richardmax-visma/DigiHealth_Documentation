@@ -1,26 +1,40 @@
 # AMQP Authentication (NHN messaging)
 
-Transport security for Helsenorge messaging (E-kontakt, Helsekontakt AMQP flows) uses mutual TLS with NHN-issued certificates and broker ACLs—no bearer tokens inside AMQP frames.
+Helsenorge messaging (E-kontakt, Helsekontakt AMQP flows) uses AMQP as transport protocol via NHN "Tjenestebuss".
+Authentication to the broker is done with mutual TLS (client certificate), not HelseID bearer tokens.
 
 ## What you need
 
 - NHN-issued client certificate and private key (Virksomhetssertifikat) registered for Tjenestebuss.
 - Trust chain for NHN/CA (Buypass/Commfides) installed so the broker cert is trusted.
-- Queue/virtual host permissions from NHN (tb.test.nhn.no / tb.nhn.no, port 5671).
-- Current Helsenorge.Messaging client library (≥ 6.0.3) if you use their SDK.
+- Queue/virtual host permissions from NHN.
+- If you use the official SDK: Helsenorge.Messaging (upgrade requirement: ≥ 6.0.3).
 
 ## How it works
 
 - Client presents cert/key during TLS handshake to Tjenestebuss (RabbitMQ). Broker authenticates via the client cert subject and applies queue/vhost ACLs.
-- Once the TLS channel is up, AMQP messages carry no bearer/JWT tokens.
+- HelseID access tokens are used for REST/FHIR APIs; they are not used to authenticate the AMQP connection itself.
 - Certs are long-lived (until expiry/rotation); each connection re-handshakes TLS.
 
-## Key endpoints (test)
+## Key endpoints
+
+### Test
 
 - AMQP: `tb.test.nhn.no:5671`
 - HelseID token (if you also call REST/FHIR APIs): `https://helseid-sts.test.nhn.no/connect/token`
 
-## References / Sourdes
+### Production
+
+- AMQP: `tb.nhn.no:5671` (Helsenett only)
+- HelseID token (if you also call REST/FHIR APIs): `https://helseid-sts.nhn.no/connect/token`
+
+## Library upgrade requirement (if using Helsenorge.Messaging)
+
+- Minimum required version: `6.0.3`
+- Deadline in test: `1.10.2025`
+- Deadline in production: `1.12.2025`
+
+## Sources
 
 - Meldingsutveksling med Helsenorge: https://helsenorge.atlassian.net/wiki/spaces/HELSENORGE/pages/690913297/Meldingsutveksling+med+Helsenorge
 - Krav til oppdatert versjon av Helsenorge Messaging: https://helsenorge.atlassian.net/wiki/spaces/HELSENORGE/pages/2904064001/Krav+til+oppdatert+versjon+av+Helsenorge+Messaging
