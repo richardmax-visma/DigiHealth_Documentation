@@ -2,8 +2,9 @@
 
 AMQP-based bidirectional messaging between citizens and healthcare providers via Helsenorge.
 
-**API Name:** `DIALOG_INNBYGGER_EKONTAKT`  
 **Technology:** AMQP (Advanced Message Queuing Protocol)
+
+**Process identifier:** E-kontakt is listed as a Helsenorge “Dialog” service. The API-katalog page lists many AMQP dialog processes, but I could not find an explicit E-kontakt entry there; confirm the exact process identifier/version with NHN during onboarding/provisioning.
 
 ## When to use
 
@@ -68,6 +69,8 @@ Provider-initiated: `ForespørselFraHelsekontakt` → `SvarFraInnbygger`.
 
 ## Payloads and classes
 
+The diagrams and tables below are a simplified, implementation-oriented view of the payloads used in this repo. For canonical schemas/terms, see the Helsenorge “Innholdsstandarder” pages (Dialogmelding + Vedlegg).
+
 Classes: [EkontaktMelding](Classes/EkontaktMelding.mmd), [Vedlegg](Classes/Vedlegg.mmd), [ForespørselFraInnbygger](Classes/ForespørselFraInnbygger.mmd), [SvarFraHelsekontakt](Classes/SvarFraHelsekontakt.mmd), [ForespørselFraHelsekontakt](Classes/ForespørselFraHelsekontakt.mmd), [SvarFraInnbygger](Classes/SvarFraInnbygger.mmd).
 
 Core fields ([EkontaktMelding](Classes/EkontaktMelding.mmd)):
@@ -117,7 +120,7 @@ classDiagram
 	class Vedlegg {
 		+String filnavn
 		+String mimeType
-		+byte[] innhold
+			+String innhold
 		+int storrelse
 	}
 
@@ -216,5 +219,8 @@ classDiagram
 ## Sources
 
 - Helsenorgetjenester overview: https://helsenorge.atlassian.net/wiki/spaces/HELSENORGE/pages/690749444/Helsenorgetjenester
+- API catalog: https://helsenorge.atlassian.net/wiki/spaces/HELSENORGE/pages/1348174674/API-katalog
 - Meldingsutveksling med Helsenorge: https://helsenorge.atlassian.net/wiki/spaces/HELSENORGE/pages/690913297/Meldingsutveksling+med+Helsenorge
 - Teknisk integrasjon med Helsenorge og PVK: https://helsenorge.atlassian.net/wiki/spaces/HELSENORGE/pages/691175425/Teknisk+integrasjon+med+Helsenorge+og+Personvernkomponenten+PVK
+- Innholdsstandarder: https://helsenorge.atlassian.net/wiki/spaces/HELSENORGE/pages/1348174289/Innholdsstandarder
+- Krav til bruk av kommunikasjonsparametre: https://helsenorge.atlassian.net/wiki/spaces/HELSENORGE/pages/1348174375/Krav+til+bruk+av+kommunikasjonsparametre

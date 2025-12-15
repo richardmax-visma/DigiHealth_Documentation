@@ -20,7 +20,7 @@ class EkontaktMelding {
 class Vedlegg {
 	+String filnavn
 	+String mimeType
-	+byte[] innhold
+	+String innhold
 	+int storrelse
 }
 
@@ -62,7 +62,7 @@ class EkontaktMelding {
 class Vedlegg {
 	+String filnavn
 	+String mimeType
-	+byte[] innhold
+	+String innhold
 	+int storrelse
 }
 

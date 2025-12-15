@@ -26,7 +26,7 @@ classDiagram
 class Vedlegg {
 	+String filnavn
 	+String mimeType
-	+byte[] innhold
+	+String innhold
 	+int storrelse
 }
 note for Vedlegg "filnavn: filename\nmimeType: PDF/JPG/PNG\ninnhold: content (base64)\nstorrelse: size in bytes"
