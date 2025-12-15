@@ -10,11 +10,11 @@ Citizen entry point for digital communication and services via Helsenorge.
 
 ## Variants and technology
 
-| Technology  | API                                                              | Use Case                | Status                |
-| ----------- | ---------------------------------------------------------------- | ----------------------- | --------------------- |
-| AMQP        | [Tjenesteoversikt](AMQP%20Tjenesteoversikt/)                     | Home care services only | In Production         |
-| FHIR        | [Medlemstjenester](Medlemstjenester/)                            | Membership services     | In Production         |
-| AMQP + FHIR | [Notifikasjon Helsekontakt](AMQP%20Notifikasjon%20Helsekontakt/) | General notifications   | In Production (Pilot) |
+| Technology  | API                                                              | Use Case                | Status        |
+| ----------- | ---------------------------------------------------------------- | ----------------------- | ------------- |
+| AMQP        | [Tjenesteoversikt](AMQP%20Tjenesteoversikt/)                     | Home care services only | In Production |
+| REST + FHIR | [Medlemstjenester](Medlemstjenester/)                            | Membership services     | In Production |
+| AMQP + FHIR | [Notifikasjon Helsekontakt](AMQP%20Notifikasjon%20Helsekontakt/) | General notifications   | In Production |
 
 ## Health contact types
 
@@ -62,7 +62,7 @@ Inline view:
 %% keep in sync with Medlemstjenester/Medlemstjenester_Flow.mmd
 sequenceDiagram
 	participant MS as 🏢 Membership System
-	participant Auth as 🔐 HelseId/STS
+	participant Auth as 🔐 HelseID
 	participant HN as 🌐 Helsenorge API
 
 	rect rgb(240, 248, 255)
@@ -129,5 +129,14 @@ Source: [Flow](AMQP%20Notifikasjon%20Helsekontakt/AMQP_Notifikasjon_Flow.mmd), [
 | ---------- | ---------------- | ---------------- | -------------- |
 | Technology | AMQP             | REST/FHIR        | AMQP + FHIR    |
 | Use case   | Home care        | Group services   | General        |
-| Auth       | AMQP certs       | HelseId/STS      | AMQP certs     |
+| Auth       | AMQP certs       | HelseID (Bearer) | AMQP certs     |
 | Payload    | XML (MsgHead)    | FHIR Bundle      | MsgHead + FHIR |
+
+## References / Sources
+
+- API catalog (process names + status): https://helsenorge.atlassian.net/wiki/spaces/HELSENORGE/pages/1348174674/API-katalog
+- AMQP Notifikasjon Helsekontakt: https://helsenorge.atlassian.net/wiki/spaces/HELSENORGE/pages/1975418911/AMQP+Notifikasjon+Helsekontakt
+- Helsenorge for kommuner – hjemmetjenesten: https://helsenorge.atlassian.net/wiki/spaces/HELSENORGE/pages/1875804167/Helsenorge+for+kommuner+-+hjemmetjenesten
+- Helsekontakter Swagger (test): https://eksternapi.hn.test.nhn.no/helsekontakter/swagger/index.html
+- Helsekontakter Swagger (prod): https://eksternapi.helsenorge.no/helsekontakter/swagger/index.html
+- Meldingsutveksling med Helsenorge (AMQP prerequisites): https://helsenorge.atlassian.net/wiki/spaces/HELSENORGE/pages/690913297/Meldingsutveksling+med+Helsenorge
