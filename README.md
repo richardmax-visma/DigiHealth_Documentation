@@ -22,6 +22,11 @@ Mermaid diagrams and documentation for Norsk Helsenett (NHN) integrations.
 🔐 [HelseID Auth](./Authentication/HelseID_Auth/)
 🔒 [AMQP Auth](./Authentication/AMQP_Auth/)
 
+## SDK recommendation (FHIR)
+
+- For NHN/Helsenorge APIs that use **FHIR** (REST/FHIR and AMQP+FHIR payloads), I recommend using the **Firely .NET SDK** to model, validate, serialize and parse FHIR resources.
+- Note: for **AMQP + FHIR** flows (e.g. Helsekontakt Notifikasjon), the **FHIR part** can use Firely, but the **MsgHead (Hodemelding) header** is not FHIR and must be handled separately.
+
 ## APIs
 
 ### HelsenorgeAktivSjekken

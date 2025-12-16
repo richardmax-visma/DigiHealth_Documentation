@@ -16,6 +16,11 @@
 - Transport: AMQP on NHN messaging infrastructure (cert-based).
 - Sender must be registered in Address Registry with a Level 2 HerId representing the health contact.
 
+## Implementation note (FHIR vs MsgHead)
+
+- This API uses **MsgHead (Hodemelding)** as a non-FHIR message header plus a **FHIR payload**.
+- Use the **Firely .NET SDK** for the FHIR payload resources (e.g., `EpisodeOfCare`, `CareTeam`) and handle **MsgHead** separately (custom XML model/serialization or equivalent).
+
 ## Diagrams
 
 - Flow: [AMQP_Notifikasjon_Flow.mmd](AMQP_Notifikasjon_Flow.mmd)
