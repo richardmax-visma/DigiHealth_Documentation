@@ -43,4 +43,6 @@ EpisodeOfCare *-- CareTeam : careTeam
 CareTeam *-- Participant : participant
 EpisodeOfCare --> AccessSecurity : meta.security
 
+note "Sender/Receiver organisation `Ident` MUST include HER-id (TypeId V=HER S=2.16.578.1.12.4.1.1.9051). EpisodeOfCare.managingOrganization should reference HER-id (level 2) when applicable."
+
 ```

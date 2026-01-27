@@ -1,3 +1,27 @@
+```mermaid
+classDiagram
+class EpisodeOfCare {
+  +string id
+  +string status
+  +Meta meta
+  +Reference patient
+  +Reference managingOrg
+  +CareTeam careTeam
+}
+
+class Reference {
+  +string reference
+  +Identifier identifier
+}
+
+class Identifier {
+  +string system
+  +string value
+}
+
+note for Identifier "When referencing an organisation responsible for treatment, use a HER-id (level 2) in the identifier (system/value)."
+
+```
 classDiagram
 class EpisodeOfCare {
   +string id

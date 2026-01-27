@@ -16,6 +16,24 @@
 - Transport: AMQP on NHN messaging infrastructure (cert-based).
 - Sender must be registered in Address Registry with a Level 2 HerId representing the health contact.
 
+**Addressing and HER‑id**
+
+- Messages use service-based addressing and rely on HER-id values. `MsgHead/MsgInfo/Sender` and `MsgHead/MsgInfo/Receiver` MUST include HER-id on two organisational levels (virksomhet and kommunikasjonspart). The HER-id used for service addresses (e.g., a health contact or endpoint) SHALL be a Level 2 HER-id from the Address Registry.
+
+Example (sender/receiver ident snippet):
+
+```xml
+<Sender>
+	<Organisation>
+		<OrganisationName>UNIVERSITETSSYKEHUSET NORD-NORGE HF</OrganisationName>
+		<Ident>
+			<Id>9</Id>
+			<TypeId V="HER" DN="HER-id" S="2.16.578.1.12.4.1.1.9051" />
+		</Ident>
+	</Organisation>
+</Sender>
+```
+
 ## Implementation note (FHIR vs MsgHead)
 
 - This API uses **MsgHead (Hodemelding)** as a non-FHIR message header plus a **FHIR payload**.
@@ -75,6 +93,11 @@ Contains sender, receiver, and patient info. The actual health contact is in the
 | Sender/Receiver | Organization info       |
 | Patient         | Patient info            |
 | Document        | FHIR EpisodeOfCare      |
+
+Notes:
+
+- `MsgId`: MUST be a UUID (Universally Unique Identifier) as specified in the Notifikasjon specification: https://helsenorge.atlassian.net/wiki/spaces/HELSENORGE/pages/1975418911/AMQP+Notifikasjon+Helsekontakt
+- `Sender/Receiver`: MUST include HER-id on two organisational levels (virksomhet + kommunikasjonspart). Use the HER-id TypeId with OID `2.16.578.1.12.4.1.1.9051` (DN="HER-id").
 
 ```mermaid
 %% keep in sync with Classes/MsgHead.mmd

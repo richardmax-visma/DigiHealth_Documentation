@@ -1,3 +1,55 @@
+```mermaid
+classDiagram
+class MsgHead {
+  +MsgInfo msgInfo
+  +Document document
+}
+
+class MsgInfo {
+  +string msgId
+  +Type type
+  +Ack ack
+  +Sender sender
+  +Receiver receiver
+  +Patient patient
+}
+
+class Sender {
+  +Organisation organisation
+}
+
+class Receiver {
+  +Organisation organisation
+}
+
+class Organisation {
+  +string organisationName
+  +Ident ident
+}
+
+class Ident {
+  +string Id
+  +TypeId TypeId
+}
+
+class TypeId {
+  +string V
+  +string DN
+  +string S
+}
+
+MsgHead o-- MsgInfo
+MsgHead o-- Document
+MsgInfo --> Sender
+MsgInfo --> Receiver
+Sender --> Organisation
+Receiver --> Organisation
+Organisation --> Ident
+Ident --> TypeId
+
+note for Ident "Ident contains the identifier value (Id) and a TypeId element. For HER-id use TypeId V=\"HER\" S=\"2.16.578.1.12.4.1.1.9051\" DN=\"HER-id\"."
+
+```
 classDiagram
 class MsgHead {
   +MsgInfo msgInfo
