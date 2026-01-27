@@ -248,4 +248,3 @@ Example MsgHead snippet (XML):
 ## Vedlegg (attachments)
 
 - `Vedlegg` is described in the eKontakt PDF as optional in general, but may be mandatory for some response types; validate per message type. When present, attachments are encoded per the `Vedlegg` class and MAY be presented to the citizen.
-
